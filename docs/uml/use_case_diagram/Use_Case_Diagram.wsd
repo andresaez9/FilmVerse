@@ -1,0 +1,41 @@
+@startuml
+
+skinparam actorStyle awesome
+left to right direction
+
+actor "User" as user
+actor "Admin" as admin
+
+rectangle FilmVerse {
+  usecase "Sign up" as SU
+  usecase "Sign in" as SI
+  usecase "View Films" as VF
+  usecase "View My List" as VML
+  usecase "Delete Film from My List" as DFML
+  usecase "Play Film" as PF
+  usecase "Write Comments" as WC
+  usecase "Unsubscribe" as US
+  usecase "Add Film" as AF
+  usecase "Modify Film" as MF
+  usecase "Delete Film" as DF
+}
+
+user --> SU
+user --> SI
+user --> VF
+user --> VML
+user --> DFML
+user --> PF
+user --> WC
+user --> US
+admin --> SI
+admin --> VF
+admin --> AF
+admin --> MF
+admin --> DF
+admin --> VML
+admin --> DFML
+admin --> PF
+admin --> WC
+admin --> US
+@enduml
