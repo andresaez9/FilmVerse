@@ -1,0 +1,64 @@
+Tabla Películas:
+
+PeliculaID (clave primaria) - int
+Título - varchar(80)
+Descripción - text
+Año de lanzamiento - int
+GéneroID (clave externa) - int (clave foranea que llega desde Categorias)
+Director - varchar(50)
+Duración - int
+Clasificación por edad - int
+Puntuación promedio - decimal
+Imagen - text
+
+
+Tabla Usuarios:
+
+UsuarioID (clave primaria) - int
+Nombre - varchar(50)
+Apellido - varchar(50)
+Correo electrónico - varchar(50)
+Contraseña (almacenada con hash) - varchar(16)
+tipo (normal/admin) default "normal"
+
+
+Tabla Torrents:
+
+TorrentID (clave primaria) - int
+Nombre de archivo torrent - varchar(50)
+Enlace magnético - text
+PeliculaID (clave externa) - int
+
+
+Tabla Comentarios:
+
+ComentarioID (clave primaria) - int
+UsuarioID (clave externa)
+PeliculaID (clave externa)
+Comentario
+Puntuación
+
+
+Tabla Categorías:
+
+CategoriaID (clave primaria)
+Nombre de categoría
+
+
+Tabla PeliculasCategorias:
+
+PeliculaID (clave externa)
+CategoriaID (clave externa)
+
+
+Tabla ListasReproduccion:
+
+ListaID (clave primaria)
+UsuarioID (clave externa)
+Nombre de lista
+
+
+Tabla PeliculasListas:
+
+ListaID (clave externa)
+PeliculaID (clave externa)
