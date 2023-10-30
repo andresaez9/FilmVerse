@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('play_lists', function (Blueprint $table) {
-            $table->id('id_play_list');
+            $table->id('id_playlist');
             $table->string('name');
             $table->bigInteger('id_user')->unsigned();
             $table->foreign('id_user')->references('id_user')->on('users');

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('films_lists', function (Blueprint $table) {
             $table->id('id_film_list');
             $table->bigInteger('id_film')->unsigned();
-            $table->bigInteger('id_play_list')->unsigned();
+            $table->bigInteger('id_playlist')->unsigned();
             $table->foreign('id_film')->references('id_film')->on('films');
-            $table->foreign('id_play_list')->references('id_play_list')->on('play_lists');
+            $table->foreign('id_playlist')->references('id_playlist')->on('play_lists');
             $table->timestamps();
         });
     }

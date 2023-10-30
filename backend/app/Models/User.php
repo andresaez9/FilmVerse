@@ -12,6 +12,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'id_user';
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +22,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
         'email',
         'password',
     ];
@@ -42,4 +46,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'id_user');
+    }
+
+    public function playlists()
+    {
+        return $this->hasMany(Playlist::class, 'id_user');
+    }
 }
