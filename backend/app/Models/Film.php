@@ -14,7 +14,7 @@ class Film extends Model
 
     public function torrent()
     {
-        return $this->belongsTo(Torrent::class, 'id_film');
+        return $this->belongsTo(Torrent::class);
     }
 
     public function category()

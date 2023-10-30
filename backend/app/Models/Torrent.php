@@ -12,8 +12,7 @@ class Torrent extends Model
     protected $primaryKey = 'id_torrent';
     protected $table = 'torrents';
 
-    public function film()
-    {
-        return $this->belongsTo(Film::class, 'id_film');
+    public function film() {
+        return $this->hasOne(Film::class);
     }
 }
