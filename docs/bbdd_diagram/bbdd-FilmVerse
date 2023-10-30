@@ -4,7 +4,7 @@ PeliculaID (clave primaria) - int
 Título - varchar(80)
 Descripción - text
 Año de lanzamiento - int
-GéneroID (clave externa) - int (clave foranea que llega desde Categorias)
+CategoryID (clave externa) - int (clave foranea que llega desde Categorias)
 Director - varchar(50)
 Duración - int
 Clasificación por edad - int
@@ -33,32 +33,26 @@ PeliculaID (clave externa) - int
 Tabla Comentarios:
 
 ComentarioID (clave primaria) - int
-UsuarioID (clave externa)
-PeliculaID (clave externa)
-Comentario
-Puntuación
+UsuarioID (clave externa) - int
+PeliculaID (clave externa) - int
+Comentario - varchar(100)
+Puntuación - decimal
 
 
 Tabla Categorías:
 
-CategoriaID (clave primaria)
-Nombre de categoría
-
-
-Tabla PeliculasCategorias:
-
-PeliculaID (clave externa)
-CategoriaID (clave externa)
+CategoriaID (clave primaria) - int
+Nombre de categoría - varchar(50)
 
 
 Tabla ListasReproduccion:
 
-ListaID (clave primaria)
-UsuarioID (clave externa)
-Nombre de lista
+ListaID (clave primaria) - int
+UsuarioID (clave externa) - int
+Nombre de lista - varchar(50)
 
 
 Tabla PeliculasListas:
 
-ListaID (clave externa)
-PeliculaID (clave externa)
+ListaID (clave externa) - int
+PeliculaID (clave externa) - int

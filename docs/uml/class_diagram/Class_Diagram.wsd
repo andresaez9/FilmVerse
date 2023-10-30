@@ -1,0 +1,30 @@
+@startuml FilmVerse
+
+package FilmVerse{
+    package Backend {
+        package Controllers {
+            class UserController {
+                + UserController()
+                + createUser()
+                + updateUser()
+                + deleteUser()
+                + getUser()
+                + getUsers()
+            }
+
+            class FilmController {
+                + FilmController()
+                + createFilm()
+                + updateFilm()
+                + deleteFilm()
+                + getFilm()
+                + getFilms()
+            }
+
+            
+        }
+    }
+}
+
+
+@enduml
