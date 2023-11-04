@@ -1,10 +1,16 @@
-<header>
-    <section class="logo">
-        <img src="assets/img/logo.jpg" alt="Logo">
-    </section>
+<mat-sidenav-container class="sidenav-container">
 
-    <nav class="navbar">
-        <a routerLink="/register">Registrarse</a>
-        <a routerLink="/login">Iniciar Sesión</a>
-    </nav>
-</header>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <img src="../../../assets/img/logo.jpg">
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
