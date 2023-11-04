@@ -13,6 +13,6 @@ class Torrent extends Model
     protected $table = 'torrents';
 
     public function film() {
-        return $this->hasOne(Film::class);
+        return $this->hasOne(Film::class, 'id_torrent', 'id_torrent');
     }
 }

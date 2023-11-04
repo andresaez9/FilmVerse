@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FilmController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
+
+Route::post('register', [AuthController::class, 'register']);
+
+Route::post('login', [AuthController::class, 'login']);
+
+//Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('films', [FilmController::class, 'showAll']);
+    Route::get('logout', [AuthController::class, 'logout']);
+    Route::get('film/{id}', [FilmController::class, 'showOne']);
+    
+
+    Route::middleware(['admin'])->group(function () {
+        Route::post('film/create', [FilmController::class, 'create']);
+        Route::put('film/{id}', [FilmController::class, 'update']);
+        Route::delete('film/{id}', [FilmController::class, 'delete']);
+    });
+//});
