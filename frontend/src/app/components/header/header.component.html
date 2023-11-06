@@ -1,16 +1,15 @@
-<mat-sidenav-container class="sidenav-container">
+<header>
+  <section class="logo">
+    <img src="../../../assets/img/logo.png">
+  </section>
 
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <img src="../../../assets/img/logo.jpg">
-    </mat-toolbar>
-    <!-- Add Content Here -->
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  <nav *ngIf="!hasLoggin()">
+    <ng-container *ngFor="let route of getMyRoutes()">
+      <a [routerLink]="route" *ngIf="routeVisibility[route]">{{route | uppercaseLetter}}</a>
+    </ng-container>
+  </nav>
+
+  <nav *ngIf="hasLoggin()">
+    <a>funciona</a>
+  </nav>
+</header>

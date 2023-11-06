@@ -1,17 +1,32 @@
-.sidenav-container {
-  height: 100%;
+header {
+  display: flex;
+  background-color: #291c1c;
 }
 
-.sidenav {
-  width: 200px;
+.logo img {
+  width: auto;
+  height: 5em;
+  padding-left: 0.7em;
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; // space-around cuando esten Inicio, Peliculas, etc
+  width: 100%;
 }
 
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
+nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 2em;
+  border: 1em solid transparent;
+  color: white;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: rgba(247, 3, 3, 0.267); // Cambiar el color de fondo al pasar el ratón por encima
+  }
 }

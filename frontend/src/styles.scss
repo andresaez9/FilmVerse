@@ -37,3 +37,10 @@ $frontend-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  background-image: url("./assets/img/background.png");
+  background-color: #291c1c;
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-size: 15em;
+}

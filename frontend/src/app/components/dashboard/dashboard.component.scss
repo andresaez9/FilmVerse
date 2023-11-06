@@ -1,0 +1,21 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 100vh;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: large;
+    width: 50em;
+    height: 20em;
+    background-color: #291c1c;
+    border: 1px solid white;
+    border-radius: 2em;
+}
