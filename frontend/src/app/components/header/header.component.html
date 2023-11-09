@@ -3,13 +3,16 @@
     <img src="../../../assets/img/logo.png">
   </section>
 
-  <nav *ngIf="!hasLoggin()">
-    <ng-container *ngFor="let route of getMyRoutes()">
-      <a [routerLink]="route" *ngIf="routeVisibility[route]">{{route | uppercaseLetter}}</a>
-    </ng-container>
+  <nav *ngIf="!hasTokken()" class="dash-nav">
+    <a routerLink="/register">Registrarse</a>
+    <a routerLink="/login">Iniciar Sesión</a>
   </nav>
 
-  <nav *ngIf="hasLoggin()">
-    <a>funciona</a>
+  <nav *ngIf="hasTokken()" class="home-nav">
+    <a routerLink="/home">Inicio</a>
+    <a routerLink="/films">Peliculas</a>
+    <a routerLink="/playlist">Mi lista</a>
+    <a routerLink="/profile">Mi Perfil</a>
+    <a (click)="logout()" routerLink="/">Cerrar Sesión</a>
   </nav>
 </header>

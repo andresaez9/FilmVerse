@@ -20,20 +20,20 @@ use App\Http\Controllers\AuthController;
     return $request->user();
 });*/
 
-Route::post('register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register']);
 
-Route::post('login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('films', [FilmController::class, 'showAll']);
-    Route::get('logout', [AuthController::class, 'logout']);
-    Route::get('film/{id}', [FilmController::class, 'showOne']);
+    Route::get('/films', [FilmController::class, 'showAll']);
+    Route::get('/logout', [AuthController::class, 'logout']);
+    Route::get('/film/{id}', [FilmController::class, 'showOne']);
     
 
     Route::middleware(['admin'])->group(function () {
-        Route::post('film/create', [FilmController::class, 'create']);
-        Route::put('film/{id}', [FilmController::class, 'update']);
-        Route::delete('film/{id}', [FilmController::class, 'delete']);
+        Route::post('/film/create', [FilmController::class, 'create']);
+        Route::put('/film/{id}', [FilmController::class, 'update']);
+        Route::delete('/film/{id}', [FilmController::class, 'delete']);
     });
 });

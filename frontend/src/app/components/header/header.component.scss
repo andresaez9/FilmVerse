@@ -9,10 +9,17 @@ header {
   padding-left: 0.7em;
 }
 
-nav {
+.dash-nav{
   display: flex;
   align-items: center;
   justify-content: flex-end; // space-around cuando esten Inicio, Peliculas, etc
+  width: 100%;
+}
+
+.home-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   width: 100%;
 }
 

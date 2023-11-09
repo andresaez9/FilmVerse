@@ -1,1 +1,12 @@
-<p>login works!</p>
+<main>
+    <section class="login-container">
+        <h1>Iniciar sesión</h1>
+
+        <form [formGroup]="loginForm" (ngSubmit)="login()"  enctype="multipart/form-data">
+            <input formControlName="email"  type="email" placeholder="Correo electrónico" name="email"/>
+            <input formControlName="password" type="password" placeholder="Contraseña" name="password"/>
+
+            <button [disabled]="loginForm.invalid" class="submit" type="submit">Iniciar sesión</button>
+        </form>
+    </section>
+</main>

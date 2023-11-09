@@ -15,7 +15,7 @@ class AuthController extends Controller
             'name' => 'required|string|between:2,100',
             'surname' => 'required|string|between:2,100',
             'email' => 'required|string|email|max:100|unique:users',
-            'password' => 'required|string|confirmed|min:6',
+            'password' => 'required|string|min:6',
         ]);
 
         if($validator->fails()){
@@ -55,7 +55,7 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('token')->plainTextToken;
 
         return response()->json([
             'user' => $user,
