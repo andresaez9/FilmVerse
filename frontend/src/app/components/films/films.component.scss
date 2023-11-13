@@ -1,0 +1,43 @@
+main {
+    height: 100vh;
+}
+
+.custom-select{
+    width: 15em;
+}
+
+.container-card {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    height: 50vh;
+
+    .custom-card {
+        display: flex;
+        flex-direction: column;
+        background-color: #291c1cb2;
+        border: 1px transparent;
+        gap: 0.8em;
+        
+        .container-img {
+            display: flex;
+            width: 15em;
+            height: auto;
+    
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .body-container {
+            color: white;
+            
+            h5{
+                margin-bottom: 1em;
+            }
+        }
+    }
+}

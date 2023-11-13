@@ -15,6 +15,8 @@ import { LoginComponent } from './components/login/login.component';
 import { UppercaseLetterPipe } from './pipes/uppercase-letter.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
+import { CardComponent } from './components/card/card.component';
+import { FilmsComponent } from './components/films/films.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,12 +26,15 @@ import { HomeComponent } from './components/home/home.component';
     RegisterComponent,
     LoginComponent,
     UppercaseLetterPipe,
-    HomeComponent
+    HomeComponent,
+    CardComponent,
+    FilmsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule

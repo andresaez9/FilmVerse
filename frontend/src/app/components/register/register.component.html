@@ -2,13 +2,43 @@
     <section class="register-container">
         <h1>Registro</h1>
 
-        <form [formGroup]="registerForm" (ngSubmit)="signUp()" enctype="multipart/form-data">
-            <input formControlName="name"  type="text" placeholder="Nombre" name="name"/>
-            <input formControlName="surname"  type="text" placeholder="Apellidos" name="surname"/>
-            <input formControlName="email"  type="email" placeholder="Correo electrónico" name="email"/>
-            <input formControlName="password" type="password" placeholder="Contraseña" name="password"/>
-
-            <button [disabled]="registerForm.invalid"  class="submit" type="submit">Registrar</button>
-        </form>
+        <div class="container mt-5">
+            <form [formGroup]="registerForm" (ngSubmit)="signUp()" enctype="multipart/form-data">
+              <div class="mb-3">
+                <input formControlName="name" type="text" class="form-control" placeholder="Nombre" />
+                <div *ngIf="registerForm.get('name')!.hasError('required') && registerForm.get('name')!.touched"
+                  class="text-danger">
+                  Nombre es obligatorio
+                </div>
+              </div>
+              <div class="mb-3">
+                <input formControlName="surname" type="text" class="form-control" placeholder="Apellidos" />
+                <div *ngIf="registerForm.get('surname')!.hasError('required') && registerForm.get('surname')!.touched"
+                  class="text-danger">
+                  Apellidos son obligatorios
+                </div>
+              </div>
+              <div class="mb-3">
+                <input formControlName="email" type="email" class="form-control" placeholder="Correo electrónico" />
+                <div *ngIf="registerForm.get('email')!.hasError('required') && registerForm.get('email')!.touched"
+                  class="text-danger">
+                  Correo electrónico es obligatorio
+                </div>
+                <div *ngIf="registerForm.get('email')!.hasError('email') && registerForm.get('email')!.touched"
+                  class="text-danger">
+                  Ingresa un correo electrónico válido
+                </div>
+              </div>
+              <div class="mb-3">
+                <input formControlName="password" type="password" class="form-control" placeholder="Contraseña" />
+                <div *ngIf="registerForm.get('password')!.hasError('required') && registerForm.get('password')!.touched"
+                  class="text-danger">
+                  Contraseña es obligatoria
+                </div>
+              </div>
+              <button [disabled]="registerForm.invalid" class="btn btn-danger" type="submit">Registrar</button>
+            </form>
+          </div>
+          
     </section>
 </main>

@@ -1,0 +1,42 @@
+<main>
+    <div class="container mt-3">
+        <select class="form-control custom-select" [(ngModel)]="selectedGenre" (change)="getByIdCategory()">
+            <option selected value="0">Seleccionar Género</option>
+            <option value="1">Acción</option>
+            <option value="2">Aventuras</option>
+            <option value="3">Ciencia Ficción</option>
+            <option value="4">Comedia</option>
+            <option value="5">Documental</option>
+            <option value="6">Drama</option>
+            <option value="7">Fantasía</option>
+            <option value="8">Musical</option>
+            <option value="9">Suspense</option>
+            <option value="10">Terror</option>
+        </select>
+    </div>
+  
+
+    <div *ngIf="selectedGenre == 0"  class="container-card">
+        <div class="custom-card" *ngFor="let film of films">
+            <div class="container-img">
+                <img src="{{film.image}}">
+            </div>
+            <div class="body-container">
+                <h5 class="card-title">{{ film.title }}</h5>
+                <a routerLink="/view/{{film.id}}" class="btn btn-danger">Ver Detalles</a>  
+            </div>
+        </div> 
+    </div>
+
+    <div *ngIf="selectedGenre != 0"  class="container-card">
+        <div class="custom-card" *ngFor="let film of filmsCategory">
+            <div class="container-img">
+                <img src="{{film.image}}">
+            </div>
+            <div class="body-container">
+                <h5 class="card-title">{{ film.title }}</h5>
+                <a routerLink="/view/{{film.id}}" class="btn btn-danger">Ver Detalles</a>  
+            </div>
+        </div> 
+    </div>
+</main>

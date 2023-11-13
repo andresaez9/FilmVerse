@@ -4,6 +4,7 @@ import { map, catchError, of, Observable, throwError, BehaviorSubject } from 'rx
 import { User, UserResponse } from '../interfaces/user.interface';
 import { FormGroup } from '@angular/forms';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 const helper = new JwtHelperService();
 
@@ -14,9 +15,10 @@ export class AuthService {
 
   private readonly baseUrl = 'http://127.0.0.1:8000/api';
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private userSubject = new BehaviorSubject<User>({name: '', email: '', password: ''});
 
-  constructor(private http: HttpClient) { 
-    this.checkToken();
+  constructor(private http: HttpClient, private router: Router) { 
+    //this.checkToken();
   }
 
   signUp(authData: User): Observable<any> {
@@ -35,6 +37,7 @@ export class AuthService {
           console.log('Res-> ', user);
           this.saveToken(user.token);
           this.loggedIn.next(true); // usuario logueado
+          this.userSubject.next(user.user);
           return user;
         }
         }),
@@ -47,17 +50,22 @@ export class AuthService {
     this.loggedIn.next(false);
   }
 
+  hasToken(): boolean {
+    const token = localStorage.getItem('token');
+    return !!token;
+  }
+
   private checkToken(): void {
     const userToken = localStorage.getItem('token');
     const isExpired = helper.isTokenExpired(userToken);
     console.log('isExpired-> ', isExpired);
     
-    isExpired ? this.logout() : this.loggedIn.next(true);
-  }
-
-  hasToken(): boolean {
-    const token = localStorage.getItem('token');
-    return !!token;
+    if (isExpired) {
+      this.logout()
+      this.router.navigate(['/']);
+    } else {
+      this.loggedIn.next(true);
+    }
   }
 
   private saveToken(token: string) {
@@ -79,5 +87,9 @@ export class AuthService {
 
   get isLogged(): Observable<boolean> {
     return this.loggedIn.asObservable();
+  }
+
+  get userValue(): Observable<User> {
+    return this.userSubject.asObservable();
   }
 }

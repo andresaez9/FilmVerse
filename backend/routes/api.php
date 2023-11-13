@@ -25,15 +25,17 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 
-Route::middleware(['auth:sanctum'])->group(function () {
+//Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/films', [FilmController::class, 'showAll']);
     Route::get('/logout', [AuthController::class, 'logout']);
+    Route::get('/films/random', [FilmController::class, 'showRandom']);
+    Route::get('/films/category/{id}', [FilmController::class, 'getByIdCategory']);
+    Route::get('/films/search/{title}', [FilmController::class, 'search']);
     Route::get('/film/{id}', [FilmController::class, 'showOne']);
     
-
     Route::middleware(['admin'])->group(function () {
         Route::post('/film/create', [FilmController::class, 'create']);
         Route::put('/film/{id}', [FilmController::class, 'update']);
         Route::delete('/film/{id}', [FilmController::class, 'delete']);
     });
-});
+//});

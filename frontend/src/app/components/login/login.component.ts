@@ -16,15 +16,17 @@ export class LoginComponent {
   constructor(private auth: AuthService, private formBuilder: FormBuilder,
     private router: Router) { 
       this.loginForm = this.formBuilder.group({
-        email: ['@email.com', [Validators.required, Validators.email]],
+        email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
       });
-    }
+  }
 
   login() {
-    this.auth.login(this.loginForm.value as UserResponse).subscribe(res => console.log('Login'));
+    if (this.loginForm.valid) {
+      this.auth.login(this.loginForm.value as UserResponse).subscribe(res => console.log('Login'));
     
-    this.router.navigate(['/home']);
-    this.loginForm.reset();
+      this.router.navigate(['/home']);
+      this.loginForm.reset();
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -8,7 +9,16 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent {
   
-  constructor(private auth: AuthService) { }
+  userName: string = '';
+  showSearch: boolean = false;
+
+  constructor(private auth: AuthService, private router: Router) { }
+
+  ngOnInit(): void {
+    this.auth.userValue.subscribe(user => {
+      this.userName = user.name!;
+    });
+  }
 
   hasTokken(): boolean {
     return this.auth.hasToken();
@@ -16,5 +26,9 @@ export class HeaderComponent {
 
   logout(): void {
     this.auth.logout();
+  }
+
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
   }
 }

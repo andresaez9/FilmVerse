@@ -11,8 +11,15 @@
   <nav *ngIf="hasTokken()" class="home-nav">
     <a routerLink="/home">Inicio</a>
     <a routerLink="/films">Peliculas</a>
-    <a routerLink="/playlist">Mi lista</a>
-    <a routerLink="/profile">Mi Perfil</a>
-    <a (click)="logout()" routerLink="/">Cerrar Sesión</a>
   </nav>
+
+  <article *ngIf="hasTokken()" class="home-user">
+    <i class="bi bi-person-fill"></i>
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Bienvenido/a {{userName}}</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" routerLink="/playlist">Mi Lista</a></li>
+      <li><a class="dropdown-item" routerLink="/profile">Mi Perfil</a></li>
+      <li><a class="dropdown-item" routerLink="/" (click)="logout()">Cerrar Sesión</a></li>
+    </ul>
+  </article>
 </header>

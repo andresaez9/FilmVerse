@@ -23,9 +23,11 @@ export class RegisterComponent {
   }
 
   signUp() {
-    this.auth.signUp(this.registerForm.value).subscribe(res => console.log('Register'));
+    if (this.registerForm.valid) {
+      this.auth.signUp(this.registerForm.value).subscribe(res => console.log('Register'));
 
-    this.router.navigate(['/login']);
-    this.registerForm.reset();
+      this.router.navigate(['/login']);
+      this.registerForm.reset();
+    }
   }
 }
