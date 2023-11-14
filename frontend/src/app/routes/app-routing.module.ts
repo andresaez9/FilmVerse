@@ -4,8 +4,7 @@ import { DashboardComponent } from '../components/dashboard/dashboard.component'
 import { RegisterComponent } from '../components/register/register.component';
 import { LoginComponent } from '../components/login/login.component';
 import { HomeComponent } from '../components/home/home.component';
-import { CardComponent } from '../components/card/card.component';
-import { FilmsComponent } from '../components/films/films.component';
+import { CatalogComponent } from '../components/catalog/catalog.component';
 
 const routes: Routes = [
   {
@@ -25,8 +24,8 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'films',
-    component: FilmsComponent
+    path: 'catalog',
+    component: CatalogComponent
   }
 ];
 

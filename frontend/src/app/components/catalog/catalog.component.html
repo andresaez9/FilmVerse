@@ -14,10 +14,12 @@
             <option value="10">Terror</option>
         </select>
     </div>
+
+    <div *ngIf="isAdmin">HOlaaaaaaa</div>
   
 
     <div *ngIf="selectedGenre == 0"  class="container-card">
-        <div class="custom-card" *ngFor="let film of films">
+        <div class="custom-card" *ngFor="let film of films | paginate: { itemsPerPage: elementsPerPage, currentPage: currentPage, totalItems: films.length }">
             <div class="container-img">
                 <img src="{{film.image}}">
             </div>
@@ -39,4 +41,22 @@
             </div>
         </div> 
     </div>
+
+    <!--<pagination-controls (pageChange)="currentPage = $event"></pagination-controls>-->
 </main>
+
+<pagination-template
+  #p="paginationApi"
+  (pageChange)="currentPage = $event">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li *ngFor="let page of p.pages"
+          [class.active]="p.getCurrent() === page.value"
+          class="page-item">
+        <a (click)="p.setCurrent(page.value)"
+           class="page-link">{{ page.label }}</a>
+      </li>
+    </ul>
+  </nav>
+</pagination-template>
+

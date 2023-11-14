@@ -35,6 +35,7 @@ export class AuthService {
       .pipe(map(user => {
         if (user && user.token) {
           console.log('Res-> ', user);
+          this.saveIsAdmin(user.user.user_type);
           this.saveToken(user.token);
           this.loggedIn.next(true); // usuario logueado
           this.userSubject.next(user.user);
@@ -53,6 +54,15 @@ export class AuthService {
   hasToken(): boolean {
     const token = localStorage.getItem('token');
     return !!token;
+  }
+
+  saveIsAdmin(type: string) {
+    localStorage.setItem('type', type);
+  }
+
+  isAdmin(): boolean {
+    const type = localStorage.getItem('type');
+    return type === 'admin';
   }
 
   private checkToken(): void {

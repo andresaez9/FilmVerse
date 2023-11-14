@@ -16,7 +16,8 @@ import { UppercaseLetterPipe } from './pipes/uppercase-letter.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { CardComponent } from './components/card/card.component';
-import { FilmsComponent } from './components/films/films.component';
+import { CatalogComponent } from './components/catalog/catalog.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,7 @@ import { FilmsComponent } from './components/films/films.component';
     UppercaseLetterPipe,
     HomeComponent,
     CardComponent,
-    FilmsComponent
+    CatalogComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,8 @@ import { FilmsComponent } from './components/films/films.component';
     FormsModule,
     MaterialModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

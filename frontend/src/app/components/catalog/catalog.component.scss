@@ -20,6 +20,8 @@ main {
         background-color: #291c1cb2;
         border: 1px transparent;
         gap: 0.8em;
+        margin-top: 2em;
+        border-radius: 0.8em;
         
         .container-img {
             display: flex;
@@ -27,6 +29,7 @@ main {
             height: auto;
     
             img {
+                border-radius: 0.8em;
                 width: 100%;
                 height: auto;
             }
@@ -40,4 +43,21 @@ main {
             }
         }
     }
+}
+
+.pagination {
+    margin-top: 3.5em;
+}
+
+.page-item.active .page-link {
+    background-color: #e24242;
+    border-color: #e24242;
+}
+
+.page-item a {
+    background-color: transparent;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 0.4em;
+    cursor: pointer;
 }
