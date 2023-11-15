@@ -1,5 +1,6 @@
 footer {
     display: flex;
+    height: 15em;
     background-color: #291c1c;
 }
 
@@ -36,6 +37,8 @@ footer {
         gap: 1em;
 
         a {
+            display: flex;
+            justify-content: center;
             text-decoration: none;
             color: white;
         }

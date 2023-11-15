@@ -16,6 +16,10 @@ export class FilmService {
 
   constructor(private http: HttpClient) {}
 
+  addFilm(film: Film): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/film/create`, film, { headers: this.headers });
+  }
+
   getAllFilms(): Observable<Film[]> {
     return this.http.get<Film[]>(`${this.baseUrl}/films`, { headers: this.headers });
   }

@@ -1,13 +1,12 @@
 main {
     display: flex;
-    height: 100vh;
     flex-direction: column;
 }
 
 .carousel {
     background-color: lightblue;
     width: 100%;
-    height: 50vh;
+    height: 50em;
     overflow: hidden; /* Puedes agregar esta línea */
  }
  

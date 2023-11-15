@@ -18,6 +18,8 @@ import { HomeComponent } from './components/home/home.component';
 import { CardComponent } from './components/card/card.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FilmViewComponent } from './components/film-view/film-view.component';
+import { AddFilmComponent } from './components/add-film/add-film.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     UppercaseLetterPipe,
     HomeComponent,
     CardComponent,
-    CatalogComponent
+    CatalogComponent,
+    FilmViewComponent,
+    AddFilmComponent
   ],
   imports: [
     BrowserModule,

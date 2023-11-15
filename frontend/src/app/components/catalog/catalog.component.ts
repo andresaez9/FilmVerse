@@ -18,9 +18,7 @@ export class CatalogComponent {
     
 
     constructor(private film: FilmService, private auth: AuthService) {
-      this.isAdmin = this.auth.isAdmin();
-      console.log(this.isAdmin);
-      
+      this.isAdmin = this.auth.isAdmin();    
     }
 
     ngOnInit(): void {
@@ -31,7 +29,7 @@ export class CatalogComponent {
     getFilms(): void {
       this.film.getAllFilms()
         .subscribe((films) => {
-          this.films = films
+          this.films = films    
       });
     }
 

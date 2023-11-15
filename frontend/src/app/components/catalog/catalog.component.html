@@ -1,5 +1,5 @@
 <main>
-    <div class="container mt-3">
+    <section class="selection mt-3">
         <select class="form-control custom-select" [(ngModel)]="selectedGenre" (change)="getByIdCategory()">
             <option selected value="0">Seleccionar Género</option>
             <option value="1">Acción</option>
@@ -13,9 +13,11 @@
             <option value="9">Suspense</option>
             <option value="10">Terror</option>
         </select>
-    </div>
-
-    <div *ngIf="isAdmin">HOlaaaaaaa</div>
+    
+        <div *ngIf="isAdmin">
+            <a routerLink="/add" class="btn btn-secondary">Añadir Pelicula</a>
+        </div>
+    </section>
   
 
     <div *ngIf="selectedGenre == 0"  class="container-card">
@@ -25,7 +27,7 @@
             </div>
             <div class="body-container">
                 <h5 class="card-title">{{ film.title }}</h5>
-                <a routerLink="/view/{{film.id}}" class="btn btn-danger">Ver Detalles</a>  
+                <a routerLink="/view/{{film.id_film}}" class="btn btn-danger">Ver Detalles</a>  
             </div>
         </div> 
     </div>
@@ -37,7 +39,7 @@
             </div>
             <div class="body-container">
                 <h5 class="card-title">{{ film.title }}</h5>
-                <a routerLink="/view/{{film.id}}" class="btn btn-danger">Ver Detalles</a>  
+                <a routerLink="/view/{{film.id_film}}" class="btn btn-danger">Ver Detalles</a>  
             </div>
         </div> 
     </div>

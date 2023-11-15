@@ -18,7 +18,7 @@ class FilmController extends Controller
     }
 
     public function showRandom() {
-        $films = Film::all()->random(4);
+        $films = Film::all()->random(7);
         return response()->json($films);
     }
 
@@ -28,15 +28,22 @@ class FilmController extends Controller
     }
 
     public function create(Request $request) {
-        $film = new Film();
+        /*$film = new Film();
         $film->title = $request->title;
         $film->description = $request->description;
+        $film->director = $request->director;
         $film->year = $request->year;
-        $film->duration = $request->duration;
-        $film->rating = $request->rating;
         $film->image = $request->image;
+        $film->duration = $request->duration;
+        $film->score = $request->score;
+        $film->id_category = $request->id_category;
+        $film->id_torrent = $request->id_torrent;
         $film->save();
-        return response()->json($film);
+        return response()->json($film);*/
+        
+        $film = Film::create($request->all());
+
+        return response()->json(['message' => 'Film created successfully', 'film' => $film], 201);
     }
 
     public function update(Request $request, $id) {

@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class TorrentController extends Controller
 {
-
+    public function showAll()
+    {
+        return response()->json(Torrent::all());
+    }
 }

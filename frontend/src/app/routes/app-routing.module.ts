@@ -5,6 +5,8 @@ import { RegisterComponent } from '../components/register/register.component';
 import { LoginComponent } from '../components/login/login.component';
 import { HomeComponent } from '../components/home/home.component';
 import { CatalogComponent } from '../components/catalog/catalog.component';
+import { FilmViewComponent } from '../components/film-view/film-view.component';
+import { AddFilmComponent } from '../components/add-film/add-film.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,14 @@ const routes: Routes = [
   {
     path: 'catalog',
     component: CatalogComponent
+  },
+  {
+    path: 'view/:id',
+    component: FilmViewComponent
+  },
+  {
+    path: 'add',
+    component: AddFilmComponent
   }
 ];
 

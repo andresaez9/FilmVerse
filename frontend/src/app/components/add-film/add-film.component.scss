@@ -1,0 +1,27 @@
+main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section h1 {
+    color: white;
+}
+
+.container {
+    width: 50em;
+}
+
+.links {
+    gap: 3em;
+    
+    button {
+        font-size: large;
+    }
+
+    a {
+        font-size: large;
+    }
+}

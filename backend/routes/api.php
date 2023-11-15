@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilmController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TorrentController;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -34,6 +36,8 @@ Route::post('/login', [AuthController::class, 'login']);
     Route::get('/film/{id}', [FilmController::class, 'showOne']);
     
     Route::middleware(['admin'])->group(function () {
+        Route::get('/categories', [CategoryController::class, 'showAll']);
+        Route::get('/torrents', [TorrentController::class, 'showAll']);
         Route::post('/film/create', [FilmController::class, 'create']);
         Route::put('/film/{id}', [FilmController::class, 'update']);
         Route::delete('/film/{id}', [FilmController::class, 'delete']);

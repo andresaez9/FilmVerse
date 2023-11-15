@@ -9,6 +9,18 @@ class Film extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'director',
+        'year',
+        'image',
+        'duration',
+        'score',
+        'id_category',
+        'id_torrent'
+    ];
+
     protected $primaryKey = 'id_film';
     protected $table = 'films';
 
