@@ -24,6 +24,10 @@ export class FilmService {
     return this.http.get<Film[]>(`${this.baseUrl}/films`, { headers: this.headers });
   }
 
+  getFilmById(id: number): Observable<Film> {
+    return this.http.get<Film>(`${this.baseUrl}/film/${id}`, { headers: this.headers });
+  }
+
   getRandFilms(): Observable<Film[]> {
     return this.http.get<Film[]>(`${this.baseUrl}/films/random`, { headers: this.headers });
   }

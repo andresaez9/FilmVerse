@@ -16,7 +16,7 @@ import { TorrentService } from 'src/app/services/torrent.service';
 })
 export class AddFilmComponent {
 
-  addFilmForm: FormGroup;
+  private _addFilmForm: FormGroup;
 
   constructor
   (
@@ -26,7 +26,7 @@ export class AddFilmComponent {
     private formBuilder: FormBuilder,
     private router: Router
   ) { 
-    this.addFilmForm = this.formBuilder.group({
+    this._addFilmForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
       director: ['', [Validators.required]],
@@ -96,5 +96,9 @@ export class AddFilmComponent {
         return torrent ? torrent.id_torrent : null;
       })
     );
+  }
+
+  get addFilmForm(): FormGroup {
+    return this._addFilmForm;
   }
 }

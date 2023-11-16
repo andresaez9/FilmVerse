@@ -14,11 +14,11 @@ const helper = new JwtHelperService();
 export class AuthService {
 
   private readonly baseUrl = 'http://127.0.0.1:8000/api';
-  private loggedIn = new BehaviorSubject<boolean>(false);
-  private userSubject = new BehaviorSubject<User>({name: '', email: '', password: ''});
+  private _userSubject: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
+  loggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router) { 
-    //this.checkToken();
+    this.checkToken();
   }
 
   signUp(authData: User): Observable<any> {
@@ -37,8 +37,10 @@ export class AuthService {
           console.log('Res-> ', user);
           this.saveIsAdmin(user.user.user_type);
           this.saveToken(user.token);
-          this.loggedIn.next(true); // usuario logueado
-          this.userSubject.next(user.user);
+          this.loggedIn.next(true);
+          this.saveLoggedIn();
+          this._userSubject.next(user.user);
+          this.saveUser();
           return user;
         }
         }),
@@ -48,16 +50,28 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('type');
+    localStorage.removeItem('user');
     this.loggedIn.next(false);
+    this.saveLoggedIn();
   }
 
-  hasToken(): boolean {
+  // va al header para controlar si esta logueado o no pero tengo loggedIn
+  /*hasToken(): boolean {
     const token = localStorage.getItem('token');
     return !!token;
-  }
+  }*/
 
   saveIsAdmin(type: string) {
     localStorage.setItem('type', type);
+  }
+
+  saveLoggedIn() {
+    localStorage.setItem('loggedIn', JSON.stringify(this.loggedIn.getValue()));
+  }
+
+  saveUser() {
+    localStorage.setItem('user', JSON.stringify(this._userSubject.getValue()));
   }
 
   isAdmin(): boolean {
@@ -65,16 +79,16 @@ export class AuthService {
     return type === 'admin';
   }
 
+  isLoggedIn(): boolean {
+    return this.loggedIn.getValue();
+  }
+
   private checkToken(): void {
     const userToken = localStorage.getItem('token');
-    const isExpired = helper.isTokenExpired(userToken);
-    console.log('isExpired-> ', isExpired);
+    console.log('isExpired-> ', userToken);
     
-    if (isExpired) {
+    if (!userToken) {
       this.logout()
-      this.router.navigate(['/']);
-    } else {
-      this.loggedIn.next(true);
     }
   }
 
@@ -95,11 +109,7 @@ export class AuthService {
     return this.baseUrl;
   }
 
-  get isLogged(): Observable<boolean> {
-    return this.loggedIn.asObservable();
-  }
-
-  get userValue(): Observable<User> {
-    return this.userSubject.asObservable();
+  get userSubject(): Observable<User> {
+    return this._userSubject.asObservable();
   }
 }

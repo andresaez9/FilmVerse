@@ -3,17 +3,17 @@
     <img src="../../../assets/img/logo.png">
   </section>
 
-  <nav *ngIf="!hasTokken()" class="dash-nav">
+  <nav *ngIf="!isLogged()" class="dash-nav"> <!--*ngIf="!hasTokken()"-->
     <a routerLink="/register">Registrarse</a>
     <a routerLink="/login">Iniciar Sesión</a>
   </nav>
 
-  <nav *ngIf="hasTokken()" class="home-nav">
+  <nav *ngIf="isLogged()" class="home-nav"> <!--*ngIf="hasTokken()"-->
     <a routerLink="/home">Inicio</a>
     <a routerLink="/catalog">Peliculas</a>
   </nav>
 
-  <article *ngIf="hasTokken()" class="home-user">
+  <article *ngIf="isLogged()" class="home-user"> <!--*ngIf="hasTokken()"-->
     <i class="bi bi-person-fill"></i>
     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Bienvenido/a {{userName}}</a>
     <ul class="dropdown-menu">

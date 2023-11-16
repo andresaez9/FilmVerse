@@ -25,6 +25,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.auth.login(this.loginForm.value as UserResponse).subscribe(res => console.log('Login'));
     
+      this.auth.loggedIn.next(true);
       this.router.navigate(['/home']);
       this.loginForm.reset();
     }

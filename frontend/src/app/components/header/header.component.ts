@@ -9,26 +9,31 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   
-  userName: string = '';
-  showSearch: boolean = false;
+  private _userName: string = JSON.parse(localStorage.getItem('user')!).name;
 
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.auth.userValue.subscribe(user => {
-      this.userName = user.name!;
-    });
+    /*this.auth.userSubject.subscribe(user => {
+      this._userName = user.name!;
+    });*/
   }
 
-  hasTokken(): boolean {
+  /*hasTokken(): boolean {
     return this.auth.hasToken();
+  }*/
+
+  isLogged(): boolean {
+    //return this.auth.loggedIn.getValue();
+
+    return (this.auth.loggedIn.getValue() || localStorage.getItem('loggedIn') == 'true')
   }
 
   logout(): void {
     this.auth.logout();
   }
 
-  toggleSearch() {
-    this.showSearch = !this.showSearch;
+  get userName() {
+    return this._userName;
   }
 }

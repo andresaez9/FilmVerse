@@ -2,7 +2,7 @@ export interface Film {
     id_film?: number;
     title: string;
     description: string;
-    diector: string;
+    director: string;
     year: number;
     image: string;
     duration: number;

@@ -7,6 +7,7 @@ import { HomeComponent } from '../components/home/home.component';
 import { CatalogComponent } from '../components/catalog/catalog.component';
 import { FilmViewComponent } from '../components/film-view/film-view.component';
 import { AddFilmComponent } from '../components/add-film/add-film.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -23,19 +24,23 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'catalog',
-    component: CatalogComponent
+    component: CatalogComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'view/:id',
-    component: FilmViewComponent
+    component: FilmViewComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'add',
-    component: AddFilmComponent
+    component: AddFilmComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
