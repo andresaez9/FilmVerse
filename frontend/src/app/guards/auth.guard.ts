@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
       return false;
     }*/
 
-    return (this.authService.loggedIn.getValue() || localStorage.getItem('loggedIn') == 'true')
+    return (this.authService.isLoggedIn() || localStorage.getItem('loggedIn') == 'true')
      || this.router.navigate(['/']);
   }
 }

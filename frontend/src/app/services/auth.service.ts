@@ -14,7 +14,7 @@ const helper = new JwtHelperService();
 export class AuthService {
 
   private readonly baseUrl = 'http://127.0.0.1:8000/api';
-  private _userSubject: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
+   _userSubject: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
   loggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router) { 
@@ -62,18 +62,6 @@ export class AuthService {
     return !!token;
   }*/
 
-  saveIsAdmin(type: string) {
-    localStorage.setItem('type', type);
-  }
-
-  saveLoggedIn() {
-    localStorage.setItem('loggedIn', JSON.stringify(this.loggedIn.getValue()));
-  }
-
-  saveUser() {
-    localStorage.setItem('user', JSON.stringify(this._userSubject.getValue()));
-  }
-
   isAdmin(): boolean {
     const type = localStorage.getItem('type');
     return type === 'admin';
@@ -81,6 +69,18 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return this.loggedIn.getValue();
+  }
+
+  private saveIsAdmin(type: string) {
+    localStorage.setItem('type', type);
+  }
+  
+  private saveLoggedIn() {
+    localStorage.setItem('loggedIn', JSON.stringify(this.isLoggedIn()));
+  }
+
+  private saveUser() {
+    localStorage.setItem('user', JSON.stringify(this._userSubject.getValue()));
   }
 
   private checkToken(): void {
