@@ -9,12 +9,20 @@ class CategoryController extends Controller
 {
 
     public function showAll() {
-        $categories = Category::all();
-        return response()->json($categories);
+        try {
+            $categories = Category::all();
+            return response()->json($categories);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Categories not found'], 404);
+        }
     }
 
     public function findNameById($id) {
-        $category = Category::find($id);
-        return response()->json($category->name);
+        try {
+            $category = Category::findOrFail($id);
+            return response()->json($category);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Category not found'], 404);
+        }
     }
 }

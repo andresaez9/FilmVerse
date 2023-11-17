@@ -1,27 +1,28 @@
 <main>
-<!-- detalle.component.html -->
-<div class="container mt-4 d-flex justify-content-center align-items-center">
-    <div *ngIf="movie" class="card text-center">
-      <div class="card-header">
-        <h2>{{ movie.title }}</h2>
-      </div>
-      <div class="card-body d-flex flex-column align-items-center">
-        <!-- Imagen de la película -->
-        <img [src]="movie.image" alt="{{ movie.title }}" class="img-fluid mb-3" style="max-width: 200px; max-height: 300px;">
-        
-        <!-- Información de la película -->
-        <p class="card-text">{{ movie.description }}</p>
-        <p class="card-text"><strong>Director:</strong> {{ movie.director }}</p>
-        <p class="card-text"><strong>Año:</strong> {{ movie.year }}</p>
-        <p class="card-text"><strong>Duración:</strong> {{ movie.duration }} minutos</p>
+  <section class="container" *ngIf="movie">
+    <section class="movie-info">
+      <picture>
+        <img [src]="movie.image">
+        <span>Duracion: {{ movie.duration }}m</span>
+        <span>Categoria: {{categoryName}}</span>
+      </picture>
   
-        <!-- Puntuación y Categoría -->
-        <div class="mt-3">
-          <p class="card-text"><strong>Puntuación:</strong> {{ movie.score }}</p>
-          <p class="card-text"><strong>Categoría:</strong> {{ movie.id_category }}</p>
-        </div>
+      <article class="info">
+        <h1>{{ movie.title }}</h1>
+        <p>{{ movie.description }}</p>
+        <p>Director: {{ movie.director }}</p>
+        <p>Año: {{ movie.year }}</p>
+        <p>Puntuacion: {{ movie.score }}</p>
+      </article>
+    </section>
+
+    <section class="buttons">
+      <a routerLink="/play" class="btn btn-primary">Ver Pelicula</a>
+      <div *ngIf="isAdmin">
+        <a routerLink="/edit" class="btn btn-warning">Editar Pelicula</a>
+        <a routerLink="/catalog" class="btn btn-danger" >Eliminar Pelicula</a>
       </div>
-    </div>
-  </div>
-  
+    </section>
+  </section>
 </main>
+

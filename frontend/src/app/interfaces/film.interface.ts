@@ -7,6 +7,6 @@ export interface Film {
     image: string;
     duration: number;
     score: number;
-    id_category: number | string;
-    id_torrent: number | string;
+    id_category: number;
+    id_torrent: number;
 }

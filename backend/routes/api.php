@@ -34,6 +34,7 @@ Route::post('/login', [AuthController::class, 'login']);
     Route::get('/films/category/{id}', [FilmController::class, 'getByIdCategory']);
     Route::get('/films/search/{title}', [FilmController::class, 'search']);
     Route::get('/film/{id}', [FilmController::class, 'showOne']);
+    Route::get('/category/{id}', [CategoryController::class, 'findNameById']);
     
     Route::middleware(['admin'])->group(function () {
         Route::get('/categories', [CategoryController::class, 'showAll']);
