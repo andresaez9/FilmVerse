@@ -23,11 +23,13 @@ export class LoginComponent {
 
   login() {
     if (this.loginForm.valid) {
-      this.auth.login(this.loginForm.value as UserResponse).subscribe(res => console.log('Login'));
+      this.auth.login(this.loginForm.value as UserResponse).subscribe(res => {
+        console.log('Login')
+        this.auth.loggedIn.next(true);
+        this.router.navigate(['/home']);
+        this.loginForm.reset();
+      });
     
-      this.auth.loggedIn.next(true);
-      this.router.navigate(['/home']);
-      this.loginForm.reset();
     }
   }
 }

@@ -20,6 +20,8 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilmViewComponent } from './components/film-view/film-view.component';
 import { AddFilmComponent } from './components/add-film/add-film.component';
+import { UpdateFilmComponent } from './components/update-film/update-film.component';
+import { StreamComponent } from './components/stream/stream.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,9 @@ import { AddFilmComponent } from './components/add-film/add-film.component';
     CardComponent,
     CatalogComponent,
     FilmViewComponent,
-    AddFilmComponent
+    AddFilmComponent,
+    UpdateFilmComponent,
+    StreamComponent
   ],
   imports: [
     BrowserModule,

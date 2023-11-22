@@ -35,4 +35,20 @@ export class FilmService {
   getByCategory(idCategory: number): Observable<Film[]> {
     return this.http.get<Film[]>(`${this.baseUrl}/films/category/${idCategory}`, { headers: this.headers });
   }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/film/delete/${id}`, { headers: this.headers });
+  }
+
+  update(id: number, film: Film): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/film/update/${id}`, film, { headers: this.headers });
+  }
+
+  getMagnetLink(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/film/torrent/${id}`, { headers: this.headers });
+  }
+
+  stream(magnetLink: string): Observable<any> {
+    return this.http.get<any>(`http://localhost:8808/stream?torrentUrl=${magnetLink}`, { headers: this.headers });
+  }
 }

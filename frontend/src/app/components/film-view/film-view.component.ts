@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { CategoryResponse } from 'src/app/interfaces/category.interface';
 import { Film } from 'src/app/interfaces/film.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { FilmService } from 'src/app/services/film.service';
 
+declare const bootstrap: any;
 @Component({
   selector: 'app-film-view',
   templateUrl: './film-view.component.html',
@@ -13,17 +14,19 @@ import { FilmService } from 'src/app/services/film.service';
 })
 export class FilmViewComponent {
 
+  @ViewChild('deleteFilmModal') deleteFilmModal!: ElementRef;
   private _movie: Film = { id_film: 0, title: '', description: '', director: '', year: 0, image: '', duration: 0, score: 0, id_category: 0, id_torrent: 0 };
   private _categoryName: string = '';
   isAdmin: boolean = false;
 
-  constructor(private route: ActivatedRoute, private film: FilmService,
-              private category: CategoryService, private auth: AuthService) { 
+  constructor(private routeActivated: ActivatedRoute, private film: FilmService,
+              private category: CategoryService, private auth: AuthService,
+              private router: Router) { 
                 this.isAdmin = this.auth.isAdmin();
               }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params: ParamMap) => {
+    this.routeActivated.paramMap.subscribe((params: ParamMap) => {
       const filmID = parseInt(params.get('id')!);
 
       this.film.getFilmById(filmID).subscribe(
@@ -45,6 +48,22 @@ export class FilmViewComponent {
       },
       error => {
         console.error('Error getting category', error);
+      });
+  }
+
+  openModal(): void {  
+      const modal = new bootstrap.Modal(this.deleteFilmModal.nativeElement);
+      modal.show()
+  }
+
+  deleteFilm(): void {
+    this.film.delete(this._movie.id_film!).subscribe(
+      res => {
+        console.log('Film deleted', res);
+        this.router.navigate(['/catalog']);
+      },
+      error => {
+        console.error('Error deleting film', error);
       });
   }
 

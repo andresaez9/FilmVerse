@@ -15,7 +15,7 @@
         </select>
     
         <div *ngIf="isAdmin">
-            <a routerLink="/add" class="btn btn-secondary">Añadir Pelicula</a>
+            <a routerLink="/add" class="btn btn-secondary"><i class="bi bi-plus"></i>Añadir Pelicula</a>
         </div>
     </section>
   
@@ -27,7 +27,7 @@
             </div>
             <div class="body-container">
                 <h5 class="card-title">{{ film.title }}</h5>
-                <a routerLink="/view/{{film.id_film}}" class="btn btn-danger">Ver Detalles</a>  
+                <a routerLink="/view/{{film.id_film}}" class="btn btn-danger"><i class="bi bi-list-ul"></i>Ver Detalles</a>  
             </div>
         </div> 
     </div>

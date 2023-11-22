@@ -3,18 +3,34 @@ footer {
     height: 15em;
     background-color: #291c1c;
 }
-
 .questions {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
     width: 40em;
-    gap: 2em;
+    
+    .icons {
+        color: white;
+        display: flex;
+        width: 10em;
+        margin-top: 1em;
+        justify-content: space-evenly;
+        margin-bottom: 1em;
+        font-size: large;
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    }
 
     span {
+        display: flex;
         margin-top: 1em;
         color: white;
+        margin-bottom: 2em;
+        gap: 0.5em;
     }
 
     img {

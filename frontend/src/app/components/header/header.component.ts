@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { User } from 'src/app/interfaces/user.interface';
 
 @Component({
   selector: 'app-header',
@@ -24,9 +25,9 @@ export class HeaderComponent {
   }
 
   changeNewName() {
-    const newName = JSON.parse(localStorage.getItem('user')!).name;
+    const newName: string = JSON.parse(localStorage.getItem('user')!).name;
 
-    const updateUser = { ...this.auth._userSubject.value, name: newName };
+    const updateUser: User = { ...this.auth._userSubject.value, name: newName };
     this.auth._userSubject.next(updateUser);
 
     this._userName = newName;

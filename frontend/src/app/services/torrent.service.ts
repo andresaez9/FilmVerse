@@ -13,4 +13,8 @@ export class TorrentService {
   getAllTorrents() {
     return this.http.get(`${this.baseUrl}/torrents`);
   }
+
+  getMagnetLinkById(id: number) {
+    return this.http.get(`${this.baseUrl}/torrent/${id}`);
+  }
 }

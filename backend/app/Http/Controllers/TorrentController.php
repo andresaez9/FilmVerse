@@ -11,4 +11,15 @@ class TorrentController extends Controller
     {
         return response()->json(Torrent::all());
     }
+
+    public function findMagnetLinkById($id)
+    {
+        return response()->json(Torrent::find($id)->magnet_link);
+    }
+
+    public function getMagnetLinkById($id)
+    {
+        $torrent = Torrent::find($id);
+        return response()->json($torrent->magnet_link);
+    }
 }

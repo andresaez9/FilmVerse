@@ -21,6 +21,11 @@ header {
   align-items: center;
   justify-content: space-evenly;
   width: 85%;
+  font-size: large;
+
+  i {
+    margin-right: 0.5em;
+  }
 }
 
 nav a {
@@ -45,8 +50,9 @@ nav a {
   width: 15%;
   color: white;
 
-  i {
+  .avatar{
     font-size: 2em;
+    margin-right: 0.3em;
   }
 
   .dropdown-menu {
@@ -64,5 +70,9 @@ nav a {
       color: white;
       background-color: #911d1d;
     }
+  }
+
+  i {
+    margin-right: 0.5em;
   }
 }

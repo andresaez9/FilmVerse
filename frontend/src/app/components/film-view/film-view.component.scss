@@ -1,17 +1,23 @@
 main {
     display: flex;
-    
+    justify-content: center;
+    align-items: center;
     height: 100vh;
 }
 
-.container {
-    background-color: #291c1cb2;
+.container-movie {
+    background-color: #291c1cd5;
     color: white;
     font-size: large;
+    display: flex;
+    flex-direction: column;
+    height: 50em;
+    width: 70em;
 
     picture{
         display: flex;
         flex-direction: column;
+        margin: 1em;
     }
 
     img {
@@ -27,6 +33,29 @@ main {
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
-        margin-left: 3em;
+        margin-left: 1em;
+        margin-right: 1em;
+
+        .description {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+        margin-top: 3em;
+
+        i {
+            margin-right: 0.5em;
+        }
+
+        div {
+            display: flex;
+            gap: 1em;
+        }
     }
 }

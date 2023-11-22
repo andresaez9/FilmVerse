@@ -24,7 +24,7 @@ return new class extends Migration
             $table->bigInteger('id_torrent')->unsigned();
             $table->timestamps();
             $table->foreign('id_category')->references('id_category')->on('categories');
-            $table->foreign('id_torrent')->references('id_torrent')->on('torrents');
+            $table->foreign('id_torrent')->references('id_torrent')->on('torrents')->onDelete('cascade');
         });
     }
 

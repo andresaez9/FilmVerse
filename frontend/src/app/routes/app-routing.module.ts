@@ -8,6 +8,8 @@ import { CatalogComponent } from '../components/catalog/catalog.component';
 import { FilmViewComponent } from '../components/film-view/film-view.component';
 import { AddFilmComponent } from '../components/add-film/add-film.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { UpdateFilmComponent } from '../components/update-film/update-film.component';
+import { StreamComponent } from '../components/stream/stream.component';
 
 const routes: Routes = [
   {
@@ -40,6 +42,16 @@ const routes: Routes = [
   {
     path: 'add',
     component: AddFilmComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit/:id',
+    component: UpdateFilmComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'stream/:id',
+    component: StreamComponent,
     canActivate: [AuthGuard]
   }
 ];

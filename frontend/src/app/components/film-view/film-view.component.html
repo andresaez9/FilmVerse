@@ -1,28 +1,46 @@
 <main>
-  <section class="container" *ngIf="movie">
+  <section class="container-movie" *ngIf="movie">
     <section class="movie-info">
       <picture>
         <img [src]="movie.image">
-        <span>Duracion: {{ movie.duration }}m</span>
-        <span>Categoria: {{categoryName}}</span>
       </picture>
   
       <article class="info">
         <h1>{{ movie.title }}</h1>
-        <p>{{ movie.description }}</p>
-        <p>Director: {{ movie.director }}</p>
-        <p>Año: {{ movie.year }}</p>
-        <p>Puntuacion: {{ movie.score }}</p>
+        <span class="description">{{ movie.description }}</span>
+        <span>Director: {{ movie.director }}</span>
+        <span>Año: {{ movie.year }}</span>
+        <span>Duracion: {{ movie.duration }}</span>
+        <span>Categoria: {{categoryName}}</span>
+        <span>Puntuacion: {{ movie.score }}</span>
       </article>
     </section>
 
     <section class="buttons">
-      <a routerLink="/play" class="btn btn-primary">Ver Pelicula</a>
+      <a routerLink="/stream/{{movie.id_torrent}}" class="btn btn-primary"><i class="bi bi-play"></i>Ver Pelicula</a>
       <div *ngIf="isAdmin">
-        <a routerLink="/edit" class="btn btn-warning">Editar Pelicula</a>
-        <a routerLink="/catalog" class="btn btn-danger" >Eliminar Pelicula</a>
+        <a routerLink="/edit/{{movie.id_film}}" class="btn btn-warning"><i class="bi bi-pencil-square"></i>Editar Pelicula</a>
+        <a class="btn btn-danger" (click)="openModal()"><i class="bi bi-trash"></i>Eliminar Pelicula</a>
       </div>
     </section>
   </section>
+
+  <div class="modal" #deleteFilmModal>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmar Borrado</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Estás seguro de que deseas eliminar esta película?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" (click)="deleteFilm()" data-bs-dismiss="modal">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 

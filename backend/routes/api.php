@@ -23,9 +23,7 @@ use App\Http\Controllers\AuthController;
 });*/
 
 Route::post('/register', [AuthController::class, 'register']);
-
 Route::post('/login', [AuthController::class, 'login']);
-
 
 //Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/films', [FilmController::class, 'showAll']);
@@ -35,12 +33,14 @@ Route::post('/login', [AuthController::class, 'login']);
     Route::get('/films/search/{title}', [FilmController::class, 'search']);
     Route::get('/film/{id}', [FilmController::class, 'showOne']);
     Route::get('/category/{id}', [CategoryController::class, 'findNameById']);
+    Route::get('/torrent/{id}', [TorrentController::class, 'findMagnetLinkById']);
+    Route::get('/film/torrent/{id}', [TorrentController::class, 'getMagnetLinkById']);
     
     Route::middleware(['admin'])->group(function () {
         Route::get('/categories', [CategoryController::class, 'showAll']);
         Route::get('/torrents', [TorrentController::class, 'showAll']);
         Route::post('/film/create', [FilmController::class, 'create']);
-        Route::put('/film/{id}', [FilmController::class, 'update']);
-        Route::delete('/film/{id}', [FilmController::class, 'delete']);
+        Route::put('/film/update/{id}', [FilmController::class, 'update']);
+        Route::delete('/film/delete/{id}', [FilmController::class, 'delete']);
     });
 //});
