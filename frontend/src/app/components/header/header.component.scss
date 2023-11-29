@@ -1,6 +1,9 @@
 header {
   display: flex;
   background-color: #291c1c;
+  position: fixed;
+  width: 100%;
+  z-index: 1000; // encima de otros elementos
 }
 
 .logo img {

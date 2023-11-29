@@ -9,7 +9,7 @@ const app = express();
 const serverPort = 8808;
 
 app.use(cors({
-  origin: 'http://localhost:4200/',
+  origin: 'http://localhost:4200',
   methods: ['GET'],
   allowedHeaders: ['Content-Type', 'Range'],
 }))

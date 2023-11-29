@@ -23,7 +23,7 @@
     <div *ngIf="selectedGenre == 0"  class="container-card">
         <div class="custom-card" *ngFor="let film of films | paginate: { itemsPerPage: elementsPerPage, currentPage: currentPage, totalItems: films.length }">
             <div class="container-img">
-                <img src="{{film.image}}">
+                <img [src]="film.image">
             </div>
             <div class="body-container">
                 <h5 class="card-title">{{ film.title }}</h5>
@@ -35,7 +35,7 @@
     <div *ngIf="selectedGenre != 0"  class="container-card">
         <div class="custom-card" *ngFor="let film of filmsCategory">
             <div class="container-img">
-                <img src="{{film.image}}">
+                <img [src]="film.image">
             </div>
             <div class="body-container">
                 <h5 class="card-title">{{ film.title }}</h5>
