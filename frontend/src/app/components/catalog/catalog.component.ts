@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
 import { Film } from 'src/app/interfaces/film.interface';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,7 +18,8 @@ export class CatalogComponent {
     isAdmin: boolean = false;
     
 
-    constructor(private film: FilmService, private auth: AuthService) {
+    constructor(private film: FilmService, private auth: AuthService,
+                private scroll: ViewportScroller) {
       this.isAdmin = this.auth.isAdmin();    
     }
 
@@ -40,6 +42,8 @@ export class CatalogComponent {
       });
     }
 
-
+    onPageChange() {
+      this.scroll.scrollToPosition([0, 0]);
+    }
 
 }

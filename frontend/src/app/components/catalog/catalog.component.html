@@ -49,7 +49,7 @@
 
 <pagination-template
   #p="paginationApi"
-  (pageChange)="currentPage = $event">
+  (pageChange)="currentPage = $event; onPageChange()">
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
       <li *ngFor="let page of p.pages"

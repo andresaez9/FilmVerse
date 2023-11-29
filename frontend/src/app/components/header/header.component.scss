@@ -1,7 +1,8 @@
 header {
   display: flex;
   background-color: #291c1c;
-  position: fixed;
+  position: sticky;
+  top: 0em;
   width: 100%;
   z-index: 1000; // encima de otros elementos
 }
