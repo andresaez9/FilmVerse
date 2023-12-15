@@ -2,11 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, Output } from '@angular/core';
 import { map, catchError, of, Observable, throwError, BehaviorSubject } from 'rxjs';
 import { User, UserResponse } from '../interfaces/user.interface';
-import { FormGroup } from '@angular/forms';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
-
-const helper = new JwtHelperService();
 
 @Injectable({
   providedIn: 'root'
@@ -51,7 +47,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('type');
-    //localStorage.removeItem('user');
+    localStorage.removeItem('user');
     this.loggedIn.next(false);
     this.saveLoggedIn();
   }

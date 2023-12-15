@@ -10,6 +10,7 @@ import { AddFilmComponent } from '../components/add-film/add-film.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { UpdateFilmComponent } from '../components/update-film/update-film.component';
 import { StreamComponent } from '../components/stream/stream.component';
+import { ProfileComponent } from '../components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,11 @@ const routes: Routes = [
   {
     path: 'stream/:id',
     component: StreamComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
     canActivate: [AuthGuard]
   }
 ];

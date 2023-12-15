@@ -7,41 +7,66 @@ main {
 }
 
 .register-container {
+    width: 30em;
     display: flex;
     flex-direction: column;
-    padding: 2em 5em 5em 5em;
     align-items: center;
     justify-content: center;
-    border-radius: 2em;
-    border: 1px solid white;
-    font-size: x-large;
+    padding: 2em;
+    border-radius: 1em;
+    background-color: rgba(29, 24, 24, 0.685);
+    font-size: 1.3em;
+
+    h1 {
+        font-size: 2em;
+        text-align: center;
+        color: white;
+    }
 
     form {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2em;
-        
-        input {
+        gap: 1.5em;
+
+        div {
             width: 20em;
-            height: 2em;
-            border-radius: 0.3em;
-            font-size: large;
         }
 
-        .submit {
+        label {
+            font-size: 1.2em;
             color: white;
-            background-color: rgb(206, 55, 55);
-            height: 2em;
-            padding: 1em;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: large;
+        }
+
+        input {
+            width: 100%;
+            height: 2.5em;
+            border: 2px solid #e50914;
+            border-radius: 0.3em;
+            background-color: #141414;
+            color: white;
+            font-size: 1em;
+            padding: 0.5em;
+            margin-top: 0.5em;
+        }
+
+        button {
+            width: 100%;
+            height: 2.5em;
+            border: none;
+            border-radius: 0.3em;
+            background-color: #e50914; /* Color rojo similar al de Netflix */
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
 
             &:hover {
-                background-color: rgb(206, 55, 55, 0.8);
-                cursor: pointer;
+                background-color: #ff3d3d; /* Color rojo más claro al hacer hover */
+            }
+
+            &:disabled {
+                background-color: #a0a0a0; /* Color gris para el botón deshabilitado */
+                cursor: not-allowed;
             }
         }
     }

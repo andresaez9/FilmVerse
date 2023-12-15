@@ -1,24 +1,25 @@
 <main>
-    <section class="login-container">
-        <h1>Iniciar sesión</h1>
+  <section class="login-container">
+    <h1 class="text-center">Iniciar Sesión</h1>
 
-        <div class="container mt-5">
-            <form [formGroup]="loginForm" (ngSubmit)="login()">
-              <div class="mb-3">
-                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+    <div class="container mt-5">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" formControlName="email" placeholder="Email">
                 <div *ngIf="loginForm.get('email')!.hasError('required') && loginForm.get('email')!.touched" class="text-danger">
-                  Email es obligatorio
+                    Email es obligatorio
                 </div>
-              </div>
-              <div class="mb-3">
-                <input type="password" class="form-control" id="password" formControlName="password" placeholder="Contraseña">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="Contraseña">
                 <div *ngIf="loginForm.get('password')!.hasError('required') && loginForm.get('password')!.touched" class="text-danger">
-                  Contraseña es obligatoria
+                    Contraseña es obligatoria
                 </div>
-              </div>
-              <button type="submit" class="btn btn-danger" [disabled]="loginForm.invalid">Iniciar sesión</button>
-            </form>
-          </div>
-          
-    </section>
+            </div>
+            <button type="submit" class="btn btn-danger" [disabled]="loginForm.invalid">Iniciar sesión</button>
+        </form>
+    </div>
+  </section>
 </main>

@@ -6,6 +6,7 @@ use App\Http\Controllers\FilmController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TorrentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,9 @@ Route::post('/login', [AuthController::class, 'login']);
     Route::get('/category/{id}', [CategoryController::class, 'findNameById']);
     Route::get('/torrent/{id}', [TorrentController::class, 'findMagnetLinkById']);
     Route::get('/film/torrent/{id}', [TorrentController::class, 'getMagnetLinkById']);
+    Route::get('/profile/{id}', [ProfileController::class, 'getOne']);
+    Route::put('/profile/update/{id}', [ProfileController::class, 'update']);
+    Route::delete('/profile/delete/{id}', [ProfileController::class, 'delete']);
     
     Route::middleware(['admin'])->group(function () {
         Route::get('/categories', [CategoryController::class, 'showAll']);
@@ -42,5 +46,6 @@ Route::post('/login', [AuthController::class, 'login']);
         Route::post('/film/create', [FilmController::class, 'create']);
         Route::put('/film/update/{id}', [FilmController::class, 'update']);
         Route::delete('/film/delete/{id}', [FilmController::class, 'delete']);
+        Route::get('/users', [ProfileController::class, 'getAllUsers']);
     });
 //});

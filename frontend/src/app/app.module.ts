@@ -22,6 +22,8 @@ import { FilmViewComponent } from './components/film-view/film-view.component';
 import { AddFilmComponent } from './components/add-film/add-film.component';
 import { UpdateFilmComponent } from './components/update-film/update-film.component';
 import { StreamComponent } from './components/stream/stream.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,9 @@ import { StreamComponent } from './components/stream/stream.component';
     FilmViewComponent,
     AddFilmComponent,
     UpdateFilmComponent,
-    StreamComponent
+    StreamComponent,
+    ProfileComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

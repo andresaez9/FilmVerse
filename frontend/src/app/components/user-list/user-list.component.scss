@@ -1,0 +1,34 @@
+h2 {
+    margin-bottom: 1em;
+}
+
+div {
+    table {
+      background-color: #291c1c;
+      color: white;
+  
+      th, td {
+        border-bottom: 1px solid white;
+        padding: 8px;
+        text-align: center;
+      }
+  
+      th {
+        background-color: #291c1c;
+      }
+  
+      tr {
+        &:nth-child(even) {
+          background-color: #3c2b2b; // Color de fondo para filas pares
+        }
+  
+        &:nth-child(odd) {
+          background-color: #291c1c; // Color de fondo para filas impares
+        }
+      }
+    }
+  }
+
+.modal {
+    color: black;
+}

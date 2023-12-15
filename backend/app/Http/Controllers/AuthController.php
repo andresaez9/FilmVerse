@@ -71,4 +71,5 @@ class AuthController extends Controller
             'message' => 'Logged out'
         ], 200);
     }
+
 }

@@ -5,6 +5,7 @@
         <div class="container mt-5">
             <form [formGroup]="registerForm" (ngSubmit)="signUp()" enctype="multipart/form-data">
               <div class="mb-3">
+                <label for="name" class="form-label">Nombre</label>
                 <input formControlName="name" type="text" class="form-control" placeholder="Nombre" />
                 <div *ngIf="registerForm.get('name')!.hasError('required') && registerForm.get('name')!.touched"
                   class="text-danger">
@@ -12,6 +13,7 @@
                 </div>
               </div>
               <div class="mb-3">
+                <label for="surname" class="form-label">Apellidos</label>
                 <input formControlName="surname" type="text" class="form-control" placeholder="Apellidos" />
                 <div *ngIf="registerForm.get('surname')!.hasError('required') && registerForm.get('surname')!.touched"
                   class="text-danger">
@@ -19,6 +21,7 @@
                 </div>
               </div>
               <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
                 <input formControlName="email" type="email" class="form-control" placeholder="Correo electrónico" />
                 <div *ngIf="registerForm.get('email')!.hasError('required') && registerForm.get('email')!.touched"
                   class="text-danger">
@@ -30,6 +33,7 @@
                 </div>
               </div>
               <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
                 <input formControlName="password" type="password" class="form-control" placeholder="Contraseña" />
                 <div *ngIf="registerForm.get('password')!.hasError('required') && registerForm.get('password')!.touched"
                   class="text-danger">

@@ -1,68 +1,77 @@
 <main>
-    <section>
+    <section class="add-container">
         <h1 class="text-center">Añadir Pelicula</h1>
-    </section>
-
-    <div class="container mt-5">
-        <form [formGroup]="addFilmForm" (ngSubmit)="addFilm()">
+        
+        <div class="container mt-5">
+          <form [formGroup]="addFilmForm" (ngSubmit)="addFilm()">
           <div class="form-group mb-3">
-            <input type="text" class="form-control" formControlName="title" id="title" name="title" placeholder="Titulo">
+            <label for="title" class="form-label">Titulo</label>
+            <input type="text" class="form-control" formControlName="title" id="title" name="title">
             <div *ngIf="addFilmForm.get('title')!.hasError('required') && addFilmForm.get('email')!.touched" class="text-danger">
                 Titulo es obligatorio
-            </div>
+              </div>
           </div>
           <div class="form-group mb-3">
-            <textarea class="form-control" formControlName="description" id="description" name="description" rows="3" placeholder="Descipcion"></textarea>
+            <label for="description" class="form-label">Descripcion</label>
+            <textarea class="form-control" formControlName="description" id="description" name="description" rows="3"></textarea>
             <div *ngIf="addFilmForm.get('description')!.hasError('required') && addFilmForm.get('description')!.touched" class="text-danger">
-                Descripcion es obligatorio
+              Descripcion es obligatorio
             </div>
           </div>
           <div class="form-group mb-3">
+            <label for="director" class="form-label">Director</label>
             <input type="text" class="form-control" formControlName="director" id="director" name="director" placeholder="Director">
             <div *ngIf="addFilmForm.get('director')!.hasError('required') && addFilmForm.get('director')!.touched" class="text-danger">
-                Director es obligatorio
+              Director es obligatorio
             </div>
           </div>
           <div class="form-group mb-3">
+            <label for="year" class="form-label">Año</label>
             <input type="text" class="form-control" formControlName="year" id="year" name="year" placeholder="Año">
             <div *ngIf="addFilmForm.get('year')!.hasError('required') && addFilmForm.get('year')!.touched" class="text-danger">
                 Año es obligatorio
             </div>
           </div>
           <div class="form-group mb-3">
+            <label for="image" class="form-label">Imagen</label>
             <input type="text" class="form-control" formControlName="image" id="image" name="image" placeholder="Imagen">
             <div *ngIf="addFilmForm.get('image')!.hasError('required') && addFilmForm.get('image')!.touched" class="text-danger">
                 Imagen es obligatorio
-            </div>
+              </div>
           </div>
           <div class="form-group mb-3">
+            <label for="duration" class="form-label">Duracion</label>
             <input type="text" class="form-control" formControlName="duration" id="duration" name="duration" placeholder="Duracion">
             <div *ngIf="addFilmForm.get('duration')!.hasError('required') && addFilmForm.get('duration')!.touched" class="text-danger">
                 Duracion es obligatorio
             </div>
           </div>
           <div class="form-group mb-3">
+            <label for="score" class="form-label">Puntuacion</label>
             <input type="text" class="form-control" formControlName="score" id="score" name="score" placeholder="Puntuacion">
             <div *ngIf="addFilmForm.get('score')!.hasError('required') && addFilmForm.get('score')!.touched" class="text-danger">
-                Puntuacion es obligatorio
+              Puntuacion es obligatorio
             </div>
           </div>
           <div class="form-group mb-3">
+            <label for="id_category" class="form-label">Categoria</label>
             <input type="text" class="form-control" formControlName="id_category" id="id_category" name="id_category" placeholder="Categoria">
             <div *ngIf="addFilmForm.get('id_category')!.hasError('required') && addFilmForm.get('id_category')!.touched" class="text-danger">
-                Categoria es obligatorio
+              Categoria es obligatorio
             </div>
           </div>
           <div class="form-group mb-3">
+            <label for="id_torrent" class="form-label">Torrent</label>
             <input type="text" class="form-control" formControlName="id_torrent" id="id_torrent" name="id_torrent" placeholder="Torrent">
             <div *ngIf="addFilmForm.get('id_torrent')!.hasError('required') && addFilmForm.get('id_torrent')!.touched" class="text-danger">
                 Torrent es obligatorio
-            </div>
+              </div>
           </div>
           <div class="d-flex justify-content-center links mt-5">
               <button type="submit" [disabled]="addFilmForm.invalid" class="btn btn-success"><i class="bi bi-check-lg"></i>Agregar</button>
               <a routerLink="/catalog" class="btn btn-danger"><i class="bi bi-x-lg"></i>Cancelar</a>
-          </div>
-        </form>
-      </div>
+            </div>
+          </form>
+        </div>
+    </section>
 </main>

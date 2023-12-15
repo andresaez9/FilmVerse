@@ -7,54 +7,47 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
-    public function edit(Request $request): View
-    {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
-    }
 
-    /**
-     * Update the user's profile information.
-     */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-        $request->user()->fill($request->validated());
+    public function getOne($id) {
+        $user = User::find($id);
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if (!$user) {
+            return response()->json([
+                'message' => 'Usuario no encontrado'
+            ], 404);
         }
 
-        $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return response()->json([
+            'user' => $user
+        ], 200);
     }
 
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request): RedirectResponse
-    {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
+    public function update(Request $request, $id) {
+        try {
+            $user = User::find($id);
+            $user->update($request->all());
+            return response()->json($user);
+        } catch (\Throwable $th) {
+            return response()->json('User not found');
+        }
+    }
 
-        $user = $request->user();
+    public function delete($id) {
+        try {
+            $user = User::find($id);
+            $user->delete();
+            return response()->json('User deleted');
+        } catch (\Throwable $th) {
+            return response()->json('User not found');
+        }
+    }
 
-        Auth::logout();
-
-        $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
+    public function getAllUsers() {
+        $users = User::all();
+        return response()->json($users);
     }
 }
