@@ -13,7 +13,7 @@ export class AuthService {
    _userSubject: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
   loggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient, private router: Router) { 
+  constructor(private http: HttpClient) { 
     this.checkToken();
   }
 
@@ -51,12 +51,6 @@ export class AuthService {
     this.loggedIn.next(false);
     this.saveLoggedIn();
   }
-
-  // va al header para controlar si esta logueado o no pero tengo loggedIn
-  /*hasToken(): boolean {
-    const token = localStorage.getItem('token');
-    return !!token;
-  }*/
 
   isAdmin(): boolean {
     const type = localStorage.getItem('type');
