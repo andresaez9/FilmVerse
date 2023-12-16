@@ -7,7 +7,7 @@
           <div class="form-group mb-3">
             <label for="title" class="form-label">Titulo</label>
             <input type="text" class="form-control" formControlName="title" id="title" name="title">
-            <div *ngIf="addFilmForm.get('title')!.hasError('required') && addFilmForm.get('email')!.touched" class="text-danger">
+            <div *ngIf="addFilmForm.get('title')!.hasError('required') && addFilmForm.get('title')!.touched" class="text-danger">
                 Titulo es obligatorio
               </div>
           </div>

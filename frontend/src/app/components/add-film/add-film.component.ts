@@ -40,19 +40,6 @@ export class AddFilmComponent {
   }
 
   addFilm() {
-    // usar inputs id_category y id_torrent de tipo number y escribir el id explicitamente en el formulario para add
-    /*if (this.addFilmForm.valid) {
-      this.film.addFilm(this.addFilmForm.value as Film).subscribe(
-        res => {
-        console.log('Film added');
-        },
-        error => {
-          console.error('Error adding film', error);
-        });
-      this.router.navigate(['/catalog']);
-      this.addFilmForm.reset();
-    }*/
-
     if (this.addFilmForm.valid) {
       const filmData = this.addFilmForm.value;
   
@@ -66,7 +53,6 @@ export class AddFilmComponent {
 
           this.film.addFilm(filmData as Film).subscribe(
             res => {
-              console.log('Film added', res);
               this.router.navigate(['/catalog']);
             },
             error => {

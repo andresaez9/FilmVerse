@@ -85,7 +85,6 @@ export class UpdateFilmComponent {
 
           this.film.update(this.filmID, filmData as Film).subscribe(
             res => {
-              console.log('Film updated', res);
               this.router.navigate([`/view/${this.filmID}`]);
             },
             error => {
@@ -111,7 +110,6 @@ export class UpdateFilmComponent {
   private getMagnetLink(id: number): Observable<string> {
     return this.torrent.getMagnetLinkById(id).pipe(
       map((torrent: any) => {
-        console.log('Torrent', torrent);
         return torrent;
       })
     );

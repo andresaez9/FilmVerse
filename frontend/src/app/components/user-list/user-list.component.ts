@@ -24,7 +24,6 @@ export class UserListComponent {
   getAll() {
     this.profileService.getAllUsers().subscribe(
       res => {
-        console.log('LIsta de usuarios: ', res);
         const userStorage = localStorage.getItem('user');
         const idUser = JSON.parse(userStorage!).id_user;
         
@@ -49,11 +48,10 @@ export class UserListComponent {
   deleteUser(): void {
     this.profileService.deleteUser(this.idUser).subscribe(
       res => {
-        console.log('Usuario eliminado: ', res);
         this.getAll();
       },
       err => {
-        console.log('err: ', err);
+        console.error('err: ', err);
       }
     );
   }

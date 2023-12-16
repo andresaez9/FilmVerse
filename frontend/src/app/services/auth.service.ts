@@ -30,7 +30,6 @@ export class AuthService {
     return this.http.post<any>(`${this.url}/login`, authData)
       .pipe(map(user => {
         if (user && user.token) {
-          console.log('Res-> ', user);
           this.saveIsAdmin(user.user.user_type);
           this.saveToken(user.token);
           this.loggedIn.next(true);
@@ -75,7 +74,6 @@ export class AuthService {
 
   private checkToken(): void {
     const userToken = localStorage.getItem('token');
-    console.log('isExpired-> ', userToken);
     
     if (!userToken) {
       this.logout()

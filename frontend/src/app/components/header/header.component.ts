@@ -14,7 +14,7 @@ export class HeaderComponent {
   private _userName: string = '';
   userSubscription: Subscription;
 
-  constructor(private auth: AuthService, private location: Location) { 
+  constructor(private auth: AuthService) { 
     this.userSubscription = this.auth.userSubject.subscribe(user => {
       this._userName = user.name || '';
     });
@@ -33,22 +33,12 @@ export class HeaderComponent {
     this._userName = newName;
   }
 
-  /*hasTokken(): boolean {
-    return this.auth.hasToken();
-  }*/
-
   isLogged(): boolean {
-    //return this.auth.loggedIn.getValue();
-
     return (this.auth.isLoggedIn() || localStorage.getItem('loggedIn') == 'true')
   }
 
   logout(): void {
     this.auth.logout();
-  }
-
-  private reloadPage(): void {
-    this.location.go(this.location.path());
   }
 
   get userName() {

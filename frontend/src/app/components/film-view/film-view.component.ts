@@ -1,6 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { CategoryResponse } from 'src/app/interfaces/category.interface';
 import { Film } from 'src/app/interfaces/film.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
@@ -59,7 +58,6 @@ export class FilmViewComponent {
   deleteFilm(): void {
     this.film.delete(this._movie.id_film!).subscribe(
       res => {
-        console.log('Film deleted', res);
         this.router.navigate(['/catalog']);
       },
       error => {

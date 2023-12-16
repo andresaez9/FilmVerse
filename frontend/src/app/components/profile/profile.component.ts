@@ -28,13 +28,9 @@ export class ProfileComponent {
   ngOnInit(): void {
     const user = localStorage.getItem('user');
     const idUser = JSON.parse(user!).id_user;
-    console.log('idUser: ', idUser);
     
-    //servicio funcion que obtenga el usuario a traves del id.
     this.profileService.getUserById(idUser).subscribe(
       res => {
-        console.log('res: ', res);        
-        
         this.updateUserForm.patchValue({
           name: res.user.name,
           surname: res.user.surname,
@@ -42,7 +38,7 @@ export class ProfileComponent {
         });
       },
       err => {
-        console.log('err: ', err);
+        console.error('err: ', err);
       }
     );
   }
@@ -56,16 +52,13 @@ export class ProfileComponent {
     if (this.updateUserForm.valid) {
       const user = localStorage.getItem('user');
       const idUser = JSON.parse(user!).id_user;
-      console.log('idUser: ', idUser);
-      console.log('updateUserForm: ', this.updateUserForm.value);
       
       this.profileService.updateUser(idUser, this.updateUserForm.value).subscribe(
         res => {
-          console.log('res: ', res);
           localStorage.setItem('user', JSON.stringify(res));
         },
         err => {
-          console.log('err: ', err);
+          console.error('err: ', err);
         }
       );
     }
@@ -77,12 +70,11 @@ export class ProfileComponent {
     
     this.profileService.deleteUser(idUser).subscribe(
       res => {
-        console.log('Usuario Borrado: ', res);
         this.authService.logout();
         this.router.navigate(['/']);
       },
       err => {
-        console.log('err: ', err);
+        console.error('err: ', err);
       }
     );
   }

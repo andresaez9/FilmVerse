@@ -7,12 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './components/header/header.component';
-import { MaterialModule } from './material/material.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-import { UppercaseLetterPipe } from './pipes/uppercase-letter.pipe';
+import { TypeUser } from './pipes/type-user.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { CardComponent } from './components/card/card.component';
@@ -32,7 +31,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
     DashboardComponent,
     RegisterComponent,
     LoginComponent,
-    UppercaseLetterPipe,
+    TypeUser,
     HomeComponent,
     CardComponent,
     CatalogComponent,
@@ -48,7 +47,6 @@ import { UserListComponent } from './components/user-list/user-list.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
     NgxPaginationModule

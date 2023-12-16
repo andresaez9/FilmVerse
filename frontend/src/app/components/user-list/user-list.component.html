@@ -1,4 +1,4 @@
-<h2>Lista de Usuarios Registrados</h2>
+<h2>Usuarios Registrados</h2>
 <div>
     <table>
         <thead>
@@ -6,7 +6,7 @@
                 <th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Email</th>
-                <th>Tipo de Usuario</th>
+                <th>Tipo</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -15,7 +15,7 @@
                 <td>{{user.name}}</td>
                 <td>{{user.surname}}</td>
                 <td>{{user.email}}</td>
-                <td>{{user.user_type}}</td>
+                <td>{{user.user_type! | typeUser}}</td>
                 <td>
                     <a class="btn btn-danger" (click)="openModal(user.id_user!)">Borrar</a>
                 </td>
