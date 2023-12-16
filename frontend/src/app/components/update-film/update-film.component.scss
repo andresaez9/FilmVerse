@@ -59,9 +59,12 @@ main {
             height: 2.5em;
             border: none;
             border-radius: 0.3em;
-            color: white;
             font-size: large;
             cursor: pointer;
+
+            .btn-warning {
+                color: black;
+            }
 
             &:disabled {
                 background-color: #a0a0a0; /* Color gris para el botón deshabilitado */

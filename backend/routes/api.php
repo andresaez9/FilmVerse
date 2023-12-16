@@ -26,7 +26,7 @@ use App\Http\Controllers\ProfileController;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-//Route::middleware(['auth:sanctum'])->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/films', [FilmController::class, 'showAll']);
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/films/random', [FilmController::class, 'showRandom']);
@@ -48,4 +48,4 @@ Route::post('/login', [AuthController::class, 'login']);
         Route::delete('/film/delete/{id}', [FilmController::class, 'delete']);
         Route::get('/users', [ProfileController::class, 'getAllUsers']);
     });
-//});
+});
