@@ -1,11 +1,11 @@
 # Proyecto Integrado Desarrollo de Aplicaciones Web
----
+
 #### Curso 23/24
 
 #### Andrés Segura Sáez
 
 ## FilmVerse
----
+
 FilmVerse es una plataforma de transmisión de películas en streaming que ofrece acceso gratuito a los usuarios que se registren en el sistema.
 
 Mi web está diseñada de la siguiente manera:
