@@ -24,10 +24,18 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // Resto del código para iniciar el servidor de streaming usando el enlace magnético
+  const os = require('os');
+  const path = require('path');
+
+  // Obtén el directorio de inicio del usuario independientemente del sistema operativo
+  const userHomeDir = os.homedir();
+
+  // Utiliza path.join para construir la ruta de manera segura
+  const videosDir = path.join(userHomeDir, 'Vídeos');
+
   const engine = peerflix(torrentUrl, {
     connections: 100,
-    path: '/home/andres/Vídeos', // Directorio temporal para almacenar los archivos del torrent
+    path: videosDir//'/home/andres/Vídeos', // Directorio temporal para almacenar los archivos del torrent
   });
 
   engine.on('ready', () => {
