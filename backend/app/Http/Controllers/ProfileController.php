@@ -13,17 +13,21 @@ class ProfileController extends Controller
 {
 
     public function getOne($id) {
-        $user = User::find($id);
-
-        if (!$user) {
+        try {
+            $user = User::find($id);
+    
+            if (!$user) {
+                return response()->json([
+                    'message' => 'Usuario no encontrado'
+                ], 404);
+            }
+    
             return response()->json([
-                'message' => 'Usuario no encontrado'
-            ], 404);
+                'user' => $user
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json('Error to show user');
         }
-
-        return response()->json([
-            'user' => $user
-        ], 200);
     }
 
     public function update(Request $request, $id) {
@@ -47,7 +51,11 @@ class ProfileController extends Controller
     }
 
     public function getAllUsers() {
-        $users = User::all();
-        return response()->json($users);
+        try {
+            $users = User::all();
+            return response()->json($users);
+        } catch (\Throwable $th) {
+            return response()->json('Error to show all users');
+        }
     }
 }

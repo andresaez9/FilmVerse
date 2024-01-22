@@ -9,17 +9,31 @@ class TorrentController extends Controller
 {
     public function showAll()
     {
-        return response()->json(Torrent::all());
+        try {
+            $torrents = Torrent::all();
+            return response()->json($torrents);
+        } catch (\Throwable $th) {
+            return response()->json('Error to show all torrents');
+        }
     }
 
     public function findMagnetLinkById($id)
     {
-        return response()->json(Torrent::find($id)->magnet_link);
+        try {
+            $torrent = Torrent::find($id);
+            return response()->json($torrent->magnet_link);
+        } catch (\Throwable $th) {
+            return response()->json('Torrent not found');
+        }
     }
 
     public function getMagnetLinkById($id)
     {
-        $torrent = Torrent::find($id);
-        return response()->json($torrent->magnet_link);
+        try {
+            $torrent = Torrent::find($id);
+            return response()->json($torrent->magnet_link);
+        } catch (\Throwable $th) {
+            return response()->json('Torrent not found');
+        }
     }
 }
